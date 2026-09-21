@@ -36,7 +36,7 @@
 **팀 프로젝트 · C로 운영체제를 공부하며 구현한 과제**<br>
 `C` `Virtual Memory` `Synchronization`
 
-- 프로세스가 끝날 때 복사한 리스트 헤더를 따라가던 코드를 고쳐, 실제 FD 리스트에서 파일을 하나씩 닫고 지우도록 했습니다.
+- 프로세스가 끝날 때 복사한 리스트 헤더를 따라가던 코드를 고쳤습니다. 실제 FD 리스트를 비우면서 열어둔 파일을 닫도록 바꿨습니다.
 - 메모리를 확보하다 실패했을 때 앞에서 잡아둔 자원을 정리하는 코드를 손봤습니다. mmap의 입력값 검사와 페이지별 지연 로딩 정보 생성도 맡았습니다.
 
 [FD 정리 수정](https://github.com/SISUinSea/Jungle-pintos_22-04_lab/commit/57649ebbdfa36f9fff63f305a55d5a364799c329) · [claim 실패 처리](https://github.com/whiskend/pintos_302_G1/pull/87) · [mmap 구현 기여](https://github.com/whiskend/pintos_302_G1/pull/98)
