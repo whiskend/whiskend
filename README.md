@@ -1,5 +1,5 @@
 <p>
-  <img src="./assets/header.svg?v=2" width="100%" alt="이경근 · Backend Developer — Cloud &amp; AI" />
+  <img src="./assets/header-ko.svg" width="100%" alt="이경근 · Backend Developer — Cloud &amp; AI" />
 </p>
 
 안녕하세요. 백엔드 개발자 이경근입니다.<br>
