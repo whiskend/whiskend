@@ -2,8 +2,10 @@
   <img src="./assets/header.svg" width="100%" alt="이경근 · Backend Developer — Cloud &amp; AI" />
 </p>
 
-요청이 들어와 저장되고 응답으로 돌아가는 흐름을 살피는 백엔드 개발자 이경근입니다.<br>
-AWS·GitHub·LLM의 응답을 서비스에 연결하며, 권한 오류와 빈 결과를 구분하고 데이터 형식을 맞추는 일을 해왔습니다.
+안녕하세요. 백엔드 개발자 이경근입니다.<br>
+전체가 어떻게 돌아가는지 먼저 보고, 궁금한 부분은 직접 만들고 설명해보며 익힙니다.
+
+지금까지 만든 것과 그 과정에서 고친 문제를 아래에 정리했습니다.
 
 [Blog](https://velog.io/@lgg007/posts) · [Algorithm](https://github.com/whiskend/Algorithm)
 
@@ -11,48 +13,44 @@ AWS·GitHub·LLM의 응답을 서비스에 연결하며, 권한 오류와 빈 �
 
 ### [AI Workout Board](https://github.com/whiskend/ai-workout-board)
 
-**개인 프로젝트 · 운동 기록과 이전 기록을 비교하는 AI 보조 서비스**<br>
+**개인 프로젝트 · 운동 기록을 남기고, 지난 기록과 비교해 다음 목표를 제안하는 게시판**<br>
 `TypeScript` `NestJS` `PostgreSQL` `Python` `FastAPI`
 
-- JWT 인증·작성자 권한 확인과 이전 기록 조회를 백엔드에서 처리했습니다.
-- 운동명을 정규화해 같은 운동의 기록을 비교하고, LLM 분석 호출이 실패하면 규칙 기반 결과를 반환하도록 했습니다.
+- JWT 로그인과 글 작성자 권한 확인을 구현했습니다. 분석할 때는 같은 사람의 이전 운동 기록만 가져오도록 했습니다.
+- '벤치'와 '벤치프레스'를 같은 운동으로 찾도록 이름을 맞췄습니다. AI 분석 호출이 실패하면 정해둔 규칙으로 결과를 만들게 했습니다.
 
-[기록 비교와 fallback](https://github.com/whiskend/ai-workout-board/pull/21) · [운동명 정규화와 분석 흐름](https://github.com/whiskend/ai-workout-board/pull/22)
+[이전 기록 비교](https://github.com/whiskend/ai-workout-board/pull/21) · [운동명 정규화](https://github.com/whiskend/ai-workout-board/pull/22)
 
 ### [SketchCatch](https://github.com/NearthYou/SketchCatch)
 
-**5인 팀 프로젝트 · 클라우드 인프라 설계·배포 플랫폼**<br>
+**5인 팀 프로젝트 · AWS 구성을 그림으로 설계하고 배포하는 서비스**<br>
 `TypeScript` `Node.js` `AWS` `Zod`
 
-- AWS 조회·GitHub 저장소 분석을 담당했습니다. 권한 때문에 읽지 못한 자원을 빈 결과와 구분하고, 중복 자원을 정규화했습니다.
-- 미리보기에는 보이지만 저장되지 않던 문제를 추적해, 미리보기 데이터와 저장 API 스키마의 불일치를 수정했습니다.
+- 저는 기존 AWS 자원을 불러오는 기능과 GitHub 저장소 분석을 맡았습니다. 권한이 없어 못 읽은 자원은 '없음'으로 처리하지 않고 따로 표시했습니다.
+- 불러온 구성이 화면에는 보이는데 저장이 안 되는 문제가 있었습니다. 화면에서 만든 데이터와 저장 API가 받는 형식을 맞춰 고쳤습니다.
 
 [저장소 분석](https://github.com/NearthYou/SketchCatch/pull/317) · [AWS 조회](https://github.com/NearthYou/SketchCatch/pull/169) · [저장 오류 수정](https://github.com/NearthYou/SketchCatch/pull/573)
 
 ### [Pintos](https://github.com/whiskend/pintos_302_G1)
 
-**팀 프로젝트 · C로 구현하며 배운 운영체제**<br>
+**팀 프로젝트 · C로 운영체제를 공부하며 구현한 과제**<br>
 `C` `Virtual Memory` `Synchronization`
 
-- 프로세스 종료 시 복사된 리스트 헤더를 순회하던 코드를 수정해, 실제 FD 리스트에서 자원을 정리하도록 했습니다.
-- 가상 메모리의 page claim 실패 경로를 정리하고, mmap 진입부 검증과 페이지별 지연 로딩 정보 구현에 기여했습니다.
+- 프로세스가 끝날 때 복사한 리스트 헤더를 따라가던 코드를 고쳐, 실제 FD 리스트에서 파일을 하나씩 닫고 지우도록 했습니다.
+- 메모리를 확보하다 실패했을 때 앞에서 잡아둔 자원을 정리하는 코드를 손봤습니다. mmap의 입력값 검사와 페이지별 지연 로딩 정보 생성도 맡았습니다.
 
 [FD 정리 수정](https://github.com/SISUinSea/Jungle-pintos_22-04_lab/commit/57649ebbdfa36f9fff63f305a55d5a364799c329) · [claim 실패 처리](https://github.com/whiskend/pintos_302_G1/pull/87) · [mmap 구현 기여](https://github.com/whiskend/pintos_302_G1/pull/98)
 
 ### [Mini GPT Lab](https://github.com/cloud-9-git/gpt-lab)
 
-**팀 학습 프로젝트 · 한 화면에서 함께 구현하고 검토한 작은 GPT**<br>
+**팀 학습 프로젝트 · 토크나이저부터 작은 GPT 모델까지 함께 만든 실습**<br>
 `Python` `PyTorch` `Byte-level BPE` `Transformer`
 
-- 토크나이저, GPT 모델, 학습·평가 흐름을 공동 구현·검토했습니다.
-- 학습 수치와 실제 출력, 실험 조건을 함께 확인하며 사전 학습 모델과 무작위 초기화 모델의 비교 결과를 기록했습니다.
+- 한 화면을 보며 토크나이저와 모델, 학습 코드를 함께 짜고 검토했습니다.
+- 실험에서는 loss가 줄어도 생성 문장이 여전히 어색했습니다. 실제 문장과 분류 결과를 같이 확인했고, 예상과 다르게 나온 결과도 남겼습니다.
 
 [토크나이저 공동 작업](https://github.com/cloud-9-git/gpt-lab/pull/1) · [모델 공동 작업](https://github.com/cloud-9-git/gpt-lab/pull/4)
 
-## Working Notes
+---
 
-- 전체 요청 흐름을 먼저 그린 뒤, 중요한 부분을 깊게 살펴봅니다.
-- 외부 응답은 서비스에서 쓸 데이터로 변환하고 검증합니다.
-- 기능이 화면에 보이는 데서 끝내지 않고, 적용·저장까지 이어지는지 확인합니다.
-
-배운 내용은 [블로그](https://velog.io/@lgg007/posts)에, 알고리즘 풀이는 [저장소](https://github.com/whiskend/Algorithm)에 남깁니다.
+공부한 내용은 [블로그](https://velog.io/@lgg007/posts)에, 알고리즘 풀이는 [저장소](https://github.com/whiskend/Algorithm)에 남깁니다.
